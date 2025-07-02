@@ -1,0 +1,38 @@
+@startuml AuthAggregation
+
+title 認証集約 (Auth Aggregation)
+
+package "認証集約(AuthAggregation)" {
+    ' 1. エンティティの定義
+    class "Auth(認証)" as Auth {
+        UserId: UserId
+        MailAdress: メールアドレス
+        Password: パスワード
+        IsAdmin: 管理者真偽値
+    }
+    ' 2. 属性の定義
+    class "UserId" as UserId {
+        + value: string
+    }
+
+    class "MailAdress(メールアドレス)" as MailAdress {
+        + value: string
+    }
+
+    class "Password(パスワード)" as Password {
+        + value: string
+    }
+
+    class "IsAdmin(管理者真偽値)" as IsAdmin {
+        + value: boolean
+    }
+
+    ' 4. 関連性の定義
+    Auth *-down- UserId
+    Auth *-down- MailAdress
+    Auth *-down- Password
+    Auth *-down- IsAdmin
+
+}
+
+@enduml
